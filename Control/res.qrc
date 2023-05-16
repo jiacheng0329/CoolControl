@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/orange-down.svg</file>
+        <file>Icons/orange-right.svg</file>
+        <file>Icons/gray-down.svg</file>
+        <file>Icons/gray-right.svg</file>
+        <file>Icons/gray-broken.svg</file>
+        <file>Icons/orange-broken.svg</file>
+        <file>Icons/orange-image.svg</file>
+        <file>Icons/gray-image.svg</file>
+        <file>Icons/orange-gift.svg</file>
+        <file>Icons/gray-gift.svg</file>
+    </qresource>
+</RCC>

@@ -2,6 +2,7 @@
 #include "ui_mdiareawidget.h"
 #include "pltshower.h"
 #include "imagelabel.h"
+#include "itemlist.h"
 #include <QDir>
 #include <QMdiArea>
 
@@ -30,7 +31,13 @@ MdiAreaWidget::MdiAreaWidget(QWidget *parent) :
     imageLabel->setWindowTitle("图片显示");
 
 
+    ItemList *itemList = new ItemList(ItemList::LogList, this);
+    itemList->addItemWidget();
+    for (int i = 0; i < 15; ++i)
+        itemList->addItemWidget();
 
+    mdiArea->addSubWindow(itemList);
+    itemList->setWindowTitle("Item列表");
 }
 
 MdiAreaWidget::~MdiAreaWidget()

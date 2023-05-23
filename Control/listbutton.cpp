@@ -18,12 +18,15 @@ ListButton::ListButton(QWidget *parent, int num) :
                   "margin:0px;}"//！！！！！！！！防止点击时文字移动
                   "QToolButton:checked{background:rgb(105,105,105);}");
 
-    m_iconNormal = {":/Icons/gray-broken.svg", ":/Icons/gray-image.svg"};
-    m_iconChecked = {":/Icons/orange-broken.svg", ":/Icons/orange-image.svg"};
-    m_text = {"点集显示", "图片显示"};
+    m_iconNormal = {};
+    m_iconChecked = {};
+    m_text = {};
 
     connect(this, SIGNAL(buttonChecked(int, bool)), this, SLOT(onButtonChecked(int, bool)));
     initButtonList(m_buttonNum);
+
+    //emit buttonChecked(0, true);
+    //onButtonChecked(5, true);
 }
 
 ListButton::~ListButton()
@@ -33,22 +36,14 @@ ListButton::~ListButton()
 
 void ListButton::onButtonChecked(int index, bool checked)
 {
-    QToolButton *button;
-    QString iconNormal, iconChecked, text;
-    if (m_button.at(index)) {
-         button = m_button.at(index);
-         iconNormal = index < m_iconNormal.size() ? m_iconNormal.at(index) : ":/Icons/gray-gift.svg";
-         iconChecked = index < m_iconChecked.size() ? m_iconChecked.at(index) : ":/Icons/orange-gift.svg";
-    }
+    if (index >= m_button.size())
+        return;
 
+    QToolButton *button = m_button.at(index);
     if (checked) {
-        button->setToolButtonStyle(Qt::ToolButtonIconOnly);
-        button->setIconSize(QSize(m_sizeChecked, m_sizeChecked));
-        button->setIcon(QIcon(iconChecked));
+        changeIconChecked(button, index);
     } else {
-        button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        button->setIconSize(QSize(m_sizeNormal, m_sizeNormal));
-        button->setIcon(QIcon(iconNormal));
+        changeIconNormal(button, index);
     }
 
 }
@@ -60,14 +55,12 @@ void ListButton::initButtonList(int num)
     layout->setSpacing(12);
 
     for (int i = 0; i < num; ++i) {
-        QString text = i < m_text.size() ? m_text.at(i) : "未定义";
-        QString iconNormal = i < m_iconNormal.size() ? m_iconNormal.at(i) : ":/Icons/gray-gift.svg";
         QToolButton *button = new QToolButton(this);
-
         button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-        button->setText(text);
         button->setIconSize(QSize(m_sizeNormal, m_sizeNormal));
-        button->setIcon(QIcon(iconNormal));
+        changeIconNormal(button, i);
+        changeText(button, i);
+
         button->setFixedSize(QSize(100, 62));
         button->setCheckable(true);
         button->setAutoExclusive(true);
@@ -81,6 +74,59 @@ void ListButton::initButtonList(int num)
 
     }
 
+}
+
+void ListButton::changeIconNormal(QToolButton *button, int index)
+{
+    QString  iconNormal = index < m_iconNormal.size() ? m_iconNormal.at(index) : ":/Icons/gray-gift.svg";
+    button->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+    button->setIconSize(QSize(m_sizeNormal, m_sizeNormal));
+    button->setIcon(QIcon(iconNormal));
+}
+
+void ListButton::changeIconChecked(QToolButton *button, int index)
+{
+    QString iconChecked = index < m_iconChecked.size() ? m_iconChecked.at(index) : ":/Icons/orange-gift.svg";
+    button->setToolButtonStyle(Qt::ToolButtonIconOnly);
+    button->setIconSize(QSize(m_sizeChecked, m_sizeChecked));
+    button->setIcon(QIcon(iconChecked));
+}
+
+void ListButton::changeText(QToolButton *button, int index)
+{
+    QString text = index < m_text.size() ? m_text.at(index) : "未定义";
+    button->setText(text);
+}
+
+void ListButton::setText(const QVector<QString> &text)
+{
+    m_text = text;
+    for (int index = 0; index < m_button.size(); ++index) {
+        QToolButton *button = m_button.at(index);
+        changeText(button, index);
+    }
+}
+
+void ListButton::setIconChecked(const QVector<QString> &iconChecked)
+{
+    m_iconChecked = iconChecked;
+    for (int index = 0; index < m_button.size(); ++index) {
+        QToolButton *button = m_button.at(index);
+        if (!button->isChecked())
+            continue;
+        changeIconChecked(button, index);
+    }
+}
+
+void ListButton::setIconNormal(const QVector<QString> &iconNormal)
+{
+    m_iconNormal = iconNormal;
+    for (int index = 0; index < m_button.size(); ++index) {
+        QToolButton *button = m_button.at(index);
+        if (button->isChecked())
+            continue;
+        changeIconNormal(button, index);
+    }
 }
 
 

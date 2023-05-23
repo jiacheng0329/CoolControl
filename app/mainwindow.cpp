@@ -16,10 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
     createDockWidget();
     createCentralWidget();
 
-    //connect(controlList, SIGNAL(buttonChecked(int)), centralWidget, SLOT(SLOT()));
-
     setStyleSheet("QDockWidget{background-color:lightgray;border:2px solid red;}"
-                  "MainWindow{background:rgb(105,105,105);}");
+                  "MainWindow{background:rgb(105,105,105);}"
+                  "QScrollBar:vertical{margin-left:8px;width:16px;}"
+                  "QScrollBar::handle:vertical{background:rgb(105,105,105);border-radius:4px;}"
+                  "QScrollBar::sub-line:vertical{background:transparent;}"
+                  "QScrollBar::add-line:vertical{background:transparent;}"
+                  "QScrollBar::sub-page:vertical{background:transparent;}"
+                  "QScrollBar::add-page:vertical{background:transparent;}");
 }
 
 MainWindow::~MainWindow()
@@ -61,8 +65,21 @@ void MainWindow::createDockWidget()
     QStringList list4 = {"测试1", "测试2", "测试3"};
     controlTree->insertComboProperty("其他", "下拉框", list4);
 
+    controlTree->addItem("其他");
+    controlTree->insertButtonProperty("其他", "按钮");
+    controlTree->insertEditProperty("其他", "编辑框", "测试");
+
+    controlTree->insertComboProperty("其他", "下拉框", list4);
+
     QDockWidget* rightDock = new QDockWidget(this);
     controlList = new ListButton(this);
+    QVector<QString> iconNormal = {":/Icons/gray-broken.svg", ":/Icons/gray-image.svg"};
+    QVector<QString> iconChecked = {":/Icons/orange-broken.svg", ":/Icons/orange-image.svg"};
+    QVector<QString> text = {"点集显示", "图片显示"};
+    controlList->setText(text);
+    controlList->setIconNormal(iconNormal);
+    controlList->setIconChecked(iconChecked);
+
     rightDock->setWidget(controlList);
     rightDock->setObjectName(tr("rightDock"));
     rightDock->setWindowTitle(tr("右侧"));

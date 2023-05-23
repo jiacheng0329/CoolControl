@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>Icons/dots.png</file>
-        <file>Icons/list.png</file>
-        <file>Icons/pic.png</file>
+        <file>Icons/gray-broken.svg</file>
+        <file>Icons/gray-image.svg</file>
+        <file>Icons/orange-broken.svg</file>
+        <file>Icons/orange-image.svg</file>
     </qresource>
-    <qresource prefix="/new/prefix1"/>
 </RCC>

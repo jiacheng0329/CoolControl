@@ -14,6 +14,10 @@ public:
     ListButton(QWidget *parent = nullptr, int num = 7);
     ~ListButton();
 
+    void setIconNormal(const QVector<QString> &iconNormal);
+    void setIconChecked(const QVector<QString> &iconChecked);
+    void setText(const QVector<QString> &text);
+
 signals:
     void buttonChecked(int index, bool checked);
 
@@ -22,6 +26,9 @@ private slots:
 
 private:
     void initButtonList(int num);
+    void changeIconNormal(QToolButton *btn, int index);
+    void changeIconChecked(QToolButton *btn, int index);
+    void changeText(QToolButton *btn, int index);
     int  m_buttonNum;
     QVector<QToolButton *> m_button;
     QVector<QString> m_iconNormal;

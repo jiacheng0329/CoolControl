@@ -5,6 +5,7 @@
 #include "itemlist.h"
 #include <QDir>
 #include <QMdiArea>
+#include <QProgressBar>
 
 MdiAreaWidget::MdiAreaWidget(QWidget *parent) :
     QWidget(parent)
@@ -38,6 +39,12 @@ MdiAreaWidget::MdiAreaWidget(QWidget *parent) :
 
     mdiArea->addSubWindow(itemList);
     itemList->setWindowTitle("Item列表");
+
+    QProgressBar *progress = new QProgressBar();
+    mdiArea->addSubWindow(progress);
+    progress->setWindowTitle("实验");
+    progress->setRange(0, 100);
+    progress->setValue(50);
 }
 
 MdiAreaWidget::~MdiAreaWidget()

@@ -9,10 +9,10 @@
 #include <QDebug>
 #include <QHeaderView>
 
-StyleString styleOrange = {"rgb(247,105,0)", "rgb(210,210,210)", "rgb(67,68,69)"
-                    , "rgb(40,40,40)",  "rgb(50,50,50)"};
-StyleString style2 = {};
-StyleString style3 = {};
+//StyleString styleOrange = {"rgb(247,105,0)", "rgb(210,210,210)", "rgb(67,68,69)"
+//                    , "rgb(40,40,40)",  "rgb(50,50,50)"};
+//StyleString style2 = {};
+//StyleString style3 = {};
 
 TreeProperty::TreeProperty(QWidget *parent) :
     QWidget(parent)
@@ -30,7 +30,7 @@ TreeProperty::TreeProperty(QWidget *parent) :
 
     m_treeWidget->setHeaderHidden(true);
 
-    m_styleColor = StyleOrange;
+   // m_styleColor = StyleOrange;
     initStyleSheet();
 
 }
@@ -89,56 +89,56 @@ void TreeProperty::insertComboProperty(const QString &itemName, const QString &p
 
 void TreeProperty::initStyleSheet()
 {
-    QString styleSheet("*{color:[text];background: [back];}"
-                  "QTreeView::branch{padding:3px;padding-bottom:10px;}"
-                  "QTreeView::branch:open:has-children{image:url(:/Icons/gray-down.svg);}"
-                  "QTreeView::branch:closed:has-children{image:url(:/Icons/gray-right.svg);}"
-                  "QTreeView::branch:open:has-children:hover{image:url(:/Icons/orange-down.svg);}"
-                  "QTreeView::branch:closed:has-children:hover{image:url(:/Icons/orange-right.svg);}"
-                  //"QTreeWidget::branch:!has-children{}"
+//    QString styleSheet("*{color:[text];background: [back];}"
+//                  "QTreeView::branch{padding:3px;padding-bottom:10px;}"
+//                  "QTreeView::branch:open:has-children{image:url(:/Icons/gray-down.svg);}"
+//                  "QTreeView::branch:closed:has-children{image:url(:/Icons/gray-right.svg);}"
+//                  "QTreeView::branch:open:has-children:hover{image:url(:/Icons/orange-down.svg);}"
+//                  "QTreeView::branch:closed:has-children:hover{image:url(:/Icons/orange-right.svg);}"
+//                  //"QTreeWidget::branch:!has-children{}"
 
-                  "QTreeWidget{outline:0px;background: [back];border:noe;padding:10px;}"
-                  "QTreeView::item{height:25px;margin-bottom:5px;color:[text];}"
-                  "QTreeView::item{border-bottom:1px solid transparent;}"
-                  "QTreeView::item:hover{color:[text];border-bottom:1px solid [light]"
-                                        ";background: [hover];}"
-                  "QTreeView::item:selected{color:rgb(210,210,210);border-bottom:1px solid [hover]"
-                                        ";background: [hover];}"
+//                  "QTreeWidget{outline:0px;background: [back];border:noe;padding:10px;}"
+//                  "QTreeView::item{height:25px;margin-bottom:5px;color:[text];}"
+//                  "QTreeView::item{border-bottom:1px solid transparent;}"
+//                  "QTreeView::item:hover{color:[text];border-bottom:1px solid [light]"
+//                                        ";background: [hover];}"
+//                  "QTreeView::item:selected{color:rgb(210,210,210);border-bottom:1px solid [hover]"
+//                                        ";background: [hover];}"
 
-                  "QPushButton{background:[control];border:1px solid rgb(105,105,105);}"
-                  "QPushButton:focus{background:[control];border:1px solid [light];}"
-                  "QLineEdit{background:[control];border:1px solid rgb(105,105,105);}"
-                  "QLineEdit:hover{background:[control];border:1px solid [light];}"
+//                  "QPushButton{background:[control];border:1px solid rgb(105,105,105);}"
+//                  "QPushButton:focus{background:[control];border:1px solid [light];}"
+//                  "QLineEdit{background:[control];border:1px solid rgb(105,105,105);}"
+//                  "QLineEdit:hover{background:[control];border:1px solid [light];}"
 
-                  "QComboBox{background:[control];border:1px solid rgb(105,105,105);}"
-                  "QComboBox:checked{background:[control];border:1px solid [light];}"
-                  "QComboBox QAbstractItemView {background:[control];outline: 0px;border:1px solid [light];}"
-                  "QComboBox QAbstractItemView::item{height:25px;}"
-                  "QComboBox QAbstractItemView::item:hover{background:rgb(105,105,105);}"
-                  "QComboBox QAbstractItemView::item:selected{background:rgb(105,105,105);}"
+//                  "QComboBox{background:[control];border:1px solid rgb(105,105,105);}"
+//                  "QComboBox:checked{background:[control];border:1px solid [light];}"
+//                  "QComboBox QAbstractItemView {background:[control];outline: 0px;border:1px solid [light];}"
+//                  "QComboBox QAbstractItemView::item{height:25px;}"
+//                  "QComboBox QAbstractItemView::item:hover{background:rgb(105,105,105);}"
+//                  "QComboBox QAbstractItemView::item:selected{background:rgb(105,105,105);}"
 
-                  "QScrollBar:vertical{margin-left:8px;width:16px;}"
-                  "QScrollBar::handle:vertical{background:rgb(105,105,105);border-radius:4px;}"
-                  "QScrollBar::sub-line:vertical{background:transparent;}"
-                  "QScrollBar::add-line:vertical{background:transparent;}"
-                  "QScrollBar::sub-page:vertical{background:transparent;}"
-                  "QScrollBar::add-page:vertical{background:transparent;}");
+//                  "QScrollBar:vertical{margin-left:8px;width:16px;}"
+//                  "QScrollBar::handle:vertical{background:rgb(105,105,105);border-radius:4px;}"
+//                  "QScrollBar::sub-line:vertical{background:transparent;}"
+//                  "QScrollBar::add-line:vertical{background:transparent;}"
+//                  "QScrollBar::sub-page:vertical{background:transparent;}"
+//                  "QScrollBar::add-page:vertical{background:transparent;}");
 
-    StyleString s;
-    switch (m_styleColor) {
-    case 0:
-        s = styleOrange;
-        break;
-    default :
-        break;
-    }
+//    StyleString s;
+//    switch (m_styleColor) {
+//    case 0:
+//        s = styleOrange;
+//        break;
+//    default :
+//        break;
+//    }
 
 
-    styleSheet.replace("[light]", s.light);
-    styleSheet.replace("[text]", s.text);
-    styleSheet.replace("[back]", s.back);
-    styleSheet.replace("[control]", s.control);
-    styleSheet.replace("[hover]", s.hover);
+//    styleSheet.replace("[light]", s.light);
+//    styleSheet.replace("[text]", s.text);
+//    styleSheet.replace("[back]", s.back);
+//    styleSheet.replace("[control]", s.control);
+//    styleSheet.replace("[hover]", s.hover);
 
-    setStyleSheet(styleSheet);
+//    setStyleSheet(styleSheet);
 }

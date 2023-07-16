@@ -11,12 +11,8 @@ ListButton::ListButton(QWidget *parent, int num) :
     m_buttonNum(num), m_sizeNormal(30), m_sizeChecked(40)
 {
     setAttribute(Qt::WA_StyledBackground);
-    setStyleSheet("*{color:rgb(210,210,210);}"
-                  "ListButton{background-color:rgb(67,68,69);}"
-                  "QToolButton{background:rgb(67,68,69);"
-                  "border:0px solid red;"
-                  "margin:0px;}"//！！！！！！！！防止点击时文字移动
-                  "QToolButton:checked{background:rgb(105,105,105);}");
+    setStyleSheet("ListButton QToolButton{border:0px solid red;margin:0px;}"//！防止点击时文字移动
+                  "ListButton QToolButton:checked{background:rgb(105,105,105);}");
 
     m_iconNormal = {};
     m_iconChecked = {};

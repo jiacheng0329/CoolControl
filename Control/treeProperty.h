@@ -4,13 +4,13 @@
 #include <QWidget>
 #include <QTreeWidget>
 
-struct StyleString {
-    QString light;
-    QString text;
-    QString back;
-    QString control;
-    QString hover;
-};
+//struct StyleString {
+//    QString light;
+//    QString text;
+//    QString back;
+//    QString control;
+//    QString hover;
+//};
 
 class TreeProperty : public QWidget
 {
@@ -21,10 +21,10 @@ public:
         PropertyButton = 0,
         PropertyEdit
     };
-    enum StyleColor {
-        StyleOrange = 0,
-        StyleRed
-    };
+//    enum StyleColor {
+//        StyleOrange = 0,
+//        StyleRed
+//    };
     explicit TreeProperty(QWidget *parent = nullptr);
     ~TreeProperty();
 
@@ -46,7 +46,7 @@ private:
 
     QTreeWidget *m_treeWidget;
     QMap<QString, QTreeWidgetItem*>m_itemMap;
-    StyleColor m_styleColor;
+    //StyleColor m_styleColor;
 };
 
 #endif // CONTROLLISTWIDGET_H

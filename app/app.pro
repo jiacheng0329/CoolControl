@@ -12,7 +12,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = CoolControl
 TEMPLATE = app
 include(../Control/control.pri)
-include(../Tool/tool.pri)
+include(../engine/engine.pri)
 
 SOURCES += \
     mdiareawidget.cpp \

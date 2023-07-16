@@ -16,14 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
     createDockWidget();
     createCentralWidget();
 
-    setStyleSheet("QDockWidget{background-color:lightgray;border:2px solid red;}"
-                  "MainWindow{background:rgb(105,105,105);}"
-                  "QScrollBar:vertical{margin-left:8px;width:16px;}"
-                  "QScrollBar::handle:vertical{background:rgb(105,105,105);border-radius:4px;}"
-                  "QScrollBar::sub-line:vertical{background:transparent;}"
-                  "QScrollBar::add-line:vertical{background:transparent;}"
-                  "QScrollBar::sub-page:vertical{background:transparent;}"
-                  "QScrollBar::add-page:vertical{background:transparent;}");
+//    setStyleSheet("QDockWidget{background-color:lightgray;border:2px solid red;}"
+//                  "MainWindow{background:rgb(105,105,105);}"
+//                  "QScrollBar:vertical{margin-left:8px;width:16px;}"
+//                  "QScrollBar::handle:vertical{background:rgb(105,105,105);border-radius:4px;}"
+//                  "QScrollBar::sub-line:vertical{background:transparent;}"
+//                  "QScrollBar::add-line:vertical{background:transparent;}"
+//                  "QScrollBar::sub-page:vertical{background:transparent;}"
+//                  "QScrollBar::add-page:vertical{background:transparent;}");
 }
 
 MainWindow::~MainWindow()

@@ -6,7 +6,10 @@
 #include "pltshower.h"
 #include "imagelabel.h"
 #include <QDir>
-
+int func3()
+{
+    char asd[] = "rfeddgfgdf";
+}
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)

@@ -1,0 +1,23 @@
+#include "noteprinter.h"
+
+LogPrinter *LogPrinter::uniqueInstance = nullptr;
+
+LogPrinter *LogPrinter::instance()
+{
+    if(!uniqueInstance) {
+        uniqueInstance = new LogPrinter;
+    }
+    return uniqueInstance;
+}
+
+void LogPrinter::deleteInstance()
+{
+    if (uniqueInstance) {
+        delete uniqueInstance;
+    }
+}
+
+LogPrinter::LogPrinter()
+{
+    m_logLevel = NoteNormal;
+}

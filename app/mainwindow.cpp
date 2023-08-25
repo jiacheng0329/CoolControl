@@ -9,6 +9,12 @@
 int func3()
 {
     char asd[] = "rfeddgfgdf";
+
+}
+void func()
+{
+    QString str = "new branch abort test";
+
 }
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

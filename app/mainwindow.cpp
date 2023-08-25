@@ -6,7 +6,10 @@
 #include "pltshower.h"
 #include "imagelabel.h"
 #include <QDir>
-
+void func()
+{
+    QString str = "new branch abort test";
+}
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
